@@ -2,217 +2,199 @@
 <html lang="pt-BR">
 <head>
   <meta charset="utf-8">
-  <title>Checklist - Tratamento de Contas Comprometidas</title>
+  <title>Checklist - Resposta a Incidentes (NIST SP 800-61)</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --color-preparacao: #666666;
+      --color-deteccao: #666666;
+      --color-contencao: #666666;
+      --color-erradicacao: #666666;
+      --color-recuperacao: #666666;
+      --color-pos: #666666;
+    }
     body {
       font-family: 'Roboto', sans-serif;
       font-size: 12px;
       margin: 0;
       padding: 20px;
-      background: #fff;
-      color: #000000;
+      background: #f4f4f4;
+      color: #333;
       line-height: 1.5;
     }
     .page {
       max-width: 900px;
       margin: auto;
-    }
-    h1, h2 {
-      color: #fff;
-      background: #666666;
-      border-radius: 4px;
-      margin-top: 20px;
-      margin-bottom: 12px;
+      background: #fff;
+      padding: 30px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      border-radius: 8px;
     }
     h1 {
-      font-size: 15px;
-      padding: 8px 14px;
+      text-align: center;
+      background-color: #666666;
+      color: #ffffff;
+      border-bottom: 2px solid #eee;
+      padding-bottom: 10px;
+      font-size: 20px;
     }
     h2 {
+      color: #fff;
+      border-radius: 4px;
+      margin-top: 25px;
+      margin-bottom: 0;
       font-size: 14px;
-      padding: 7px 12px;
+      padding: 8px 12px;
     }
+    /* Cores das Fases */
+    .h-preparacao { background: var(--color-preparacao); }
+    .h-deteccao { background: var(--color-deteccao); }
+    .h-contencao { background: var(--color-contencao); }
+    .h-erradicacao { background: var(--color-erradicacao); }
+    .h-recuperacao { background: var(--color-recuperacao); }
+    .h-pos { background: var(--color-pos); }
+
     table {
       width: 100%;
       border-collapse: collapse;
-      margin-bottom: 20px;
+      margin-bottom: 10px;
     }
     th, td {
-      border: 1px solid #ccc;
-      padding: 8px;
-      vertical-align: top;
+      border: 1px solid #ddd;
+      padding: 10px;
+      vertical-align: middle;
     }
     th {
-      background: #b1b0b0;
+      background: #f9f9f9;
       text-align: left;
       font-weight: 700;
-    }
-    td.etapa {
-      background: #e4e3e3;
-      font-weight: 700;
+      width: 150px;
     }
     label {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
+      cursor: pointer;
+      width: 100%;
     }
     input[type=checkbox] {
-      width: 18px;
-      height: 18px;
-    }
-    .critico-numero::before {
-      content: "🔴";
-      font-size: 0.8em;
-      margin-right: 4px;
-      vertical-align: middle;
+      width: 16px;
+      height: 16px;
+      cursor: pointer;
     }
     .condicional {
-      background: #cecece;
+      background: #fff3e0;
       font-weight: 700;
-      text-align: center;
+      font-style: italic;
+      color: #e65100;
+      font-size: 11px;
     }
     .actions {
-      margin-top: 16px;
+      margin-top: 30px;
       display: flex;
-      gap: 12px;
+      gap: 15px;
+      justify-content: center;
     }
     button {
-      padding: 8px 16px;
-      font-family: 'Roboto', sans-serif;
-      font-size: 12px;
+      padding: 10px 20px;
+      font-weight: bold;
       cursor: pointer;
       border: none;
       border-radius: 4px;
+      transition: 0.2s;
     }
-    .save-btn { background: #4c7faf; color: #fff; }
-    .clear-btn { background: #797b7c; color: #fff; }
-    .note {
-      margin-top: 8px;
-      color: #666;
-      font-style: italic;
-    }
+    .save-btn { background: #2e7d32; color: #fff; }
+    .save-btn:hover { background: #1b5e20; }
+    .clear-btn { background: #757575; color: #fff; }
+    .clear-btn:hover { background: #424242; }
   </style>
 </head>
 <body>
   <div class="page">
-    <h1>Checklist - Tratamento de Contas Comprometidas</h1>
-
+    <h1>Checklist de Resposta: Comprometimento de Contas</h1>
     <p>Este checklist tem como objetivo guiar a resposta estruturada a incidentes de comprometimento de contas, garantindo que todas as ações necessárias sejam executadas de forma completa e documentada.</p>
 
-    <h2>1. DETECÇÃO INICIAL</h2>
+    <h2 class="h-preparacao">1. PREPARAÇÃO</h2>
     <table>
-      <tr><th>Etapa</th><th>Descrição</th></tr>
-      <tr><td class="etapa">INÍCIO</td><td><label><input type="checkbox" id="chk-0"> Disparar o processo de resposta ao incidente de conta comprometida</label></td></tr>
-      <tr><td class="etapa">1.1 Alerta de comprometimento de conta</td><td><label><input type="checkbox" id="chk-1-1"> Registrar alerta e identificar a conta comprometida</label></td></tr>
-      <tr><td class="etapa">1.2 BLOQUEIO IMEDIATO DA CONTA</td><td><label><input type="checkbox" id="chk-1-2"> Bloquear imediatamente o acesso à conta comprometida</label></td></tr>
-      <tr><td class="etapa">1.3 Forçar logout de sessões ativas</td><td><label><input type="checkbox" id="chk-1-3"> Encerrar todas as sessões ativas da conta</label></td></tr>
-      <tr><td class="etapa">1.4 Preservar evidências de autenticação</td><td><label><input type="checkbox" id="chk-1-4"> Coletar e preservar logs de autenticação e eventos relacionados</label></td></tr>
-      <tr><td class="etapa">1.5 Monitorar tentativas de login</td><td><label><input type="checkbox" id="chk-1-5"> Configurar monitoramento para novas tentativas de acesso suspeitas</label></td></tr>
+      <tr><th>Políticas</th><td><label><input type="checkbox" id="c1-1"> Validar Baseline de comportamento e acessos da conta</label></td></tr>
+      <tr><th>Controles</th><td><label><input type="checkbox" id="c1-2"> Confirmar se MFA está ativo e métodos de recuperação configurados</label></td></tr>
+      <tr><th>Mapeamento de contas críticas</th><td><label><input type="checkbox" id="c1-1"> Focar no impacto que a perda dessas credenciais causaria à operação</label></td></tr>
+      <tr><th>Gestão de Privilégios</th><td><label><input type="checkbox" id="c1-2"> Impedir que um comprometimento de conta comum se transforme em um desastre total (movimentação lateral).</label></td></tr>
     </table>
 
-    <h2>2. AVALIAÇÃO DE RISCO</h2>
+    <h2 class="h-deteccao">2. DETECÇÃO E ANÁLISE</h2>
     <table>
-      <tr><th>Etapa</th><th>Descrição</th></tr>
-      <tr><td class="etapa">2.1 Avaliar impacto e privilégio da conta</td><td><label><input type="checkbox" id="chk-2-1"> Analisar nível de privilégio e potencial impacto do comprometimento</label></td></tr>
-      <tr><td class="etapa"><span class="critico-numero">2.2</span> Risco de propagação imediata?</td><td><label><input type="checkbox" id="chk-2-2"> Avaliar se o acesso comprometido pode propagar o ataque</label></td></tr>
-
-      <tr><td colspan="2" class="condicional">Se SIM (há risco de propagação)</td></tr>
-      <tr><td class="etapa">2.2(a) Manter a conta suspensa</td><td><label><input type="checkbox" id="chk-2-2a"> Manter conta bloqueada para conter propagação</label></td></tr>
-      <tr><td class="etapa">2.2(c) Reset imediato de credenciais</td><td><label><input type="checkbox" id="chk-2-2c"> Redefinir senha e tokens de acesso imediatamente</label></td></tr>
-
-      <tr><td colspan="2" class="condicional">Se NÃO (não há risco de propagação)</td></tr>
-      <tr><td class="etapa">2.2(b) Não suspender a conta</td><td><label><input type="checkbox" id="chk-2-2b"> Manter conta ativa com monitoramento reforçado</label></td></tr>
-      <tr><td class="etapa">2.2(c) Reset imediato de credenciais</td><td><label><input type="checkbox" id="chk-2-2c-2"> Redefinir senha e tokens de acesso preventivamente</label></td></tr>
-
-      <tr><td class="etapa">2.3 Notificar responsável pela conta</td><td><label><input type="checkbox" id="chk-2-3"> Comunicar incidente ao usuário/dono da conta</label></td></tr>
-      <tr><td class="etapa">2.4 Aguardar validação e feedback DSInf</td><td><label><input type="checkbox" id="chk-2-4"> Aguardar análise e orientação da Diretoria de Segurança da Informação</label></td></tr>
+      <tr><th>Triagem</th><td><label><input type="checkbox" id="c2-1"> Analisar Geolocalização, IP e User-Agent do login suspeito</label></td></tr>
+      <tr><th>Impacto</th><td><label><input type="checkbox" id="c2-2"> Identificar nível de privilégio e criticidade dos dados acessados</label></td></tr>
+      <tr><th>Coleta</th><td><label><input type="checkbox" id="c2-3"> Preservar Logs de Auditoria (Sign-in logs, UAL, Audit logs)</label></td></tr>
     </table>
 
-    <h2>3. COMUNICAÇÃO E INVESTIGAÇÃO</h2>
+    <h2 class="h-contencao">3. CONTENÇÃO</h2>
     <table>
-      <tr><th>Etapa</th><th>Descrição</th></tr>
-      <tr><td class="etapa"><span class="critico-numero">3.1</span> Incidente resolvido?</td><td><label><input type="checkbox" id="chk-3-1"> Verificar se as medidas tomadas resolveram o comprometimento</label></td></tr>
-
-      <tr><td colspan="2" class="condicional">Se NÃO resolvido</td></tr>
-      <tr><td class="etapa">3.2 Reforçar alertas SIEM</td><td><label><input type="checkbox" id="chk-3-2"> Aumentar sensibilidade de alertas para atividades da conta</label></td></tr>
-      <tr><td class="etapa">3.3 Auditoria de logs de autenticação</td><td><label><input type="checkbox" id="chk-3-3"> Analisar logs detalhadamente para identificar padrões suspeitos</label></td></tr>
-      <tr><td class="etapa">3.4 Correlação de eventos</td><td><label><input type="checkbox" id="chk-3-4"> Correlacionar eventos com outros alertas do ambiente</label></td></tr>
-
-      <tr><td class="etapa">3.5 Reintegrar ou manter bloqueada?</td><td><label><input type="checkbox" id="chk-3-5"> Decidir status final da conta com base na investigação</label></td></tr>
-
-      <tr><td colspan="2" class="condicional">Se MANTER BLOQUEADA</td></tr>
-      <tr><td class="etapa">3.5(a) Documentar justificativa para bloqueio</td><td><label><input type="checkbox" id="chk-3-5a"> Registrar motivos para manter conta suspensa</label></td></tr>
-
-      <tr><td colspan="2" class="condicional">Se REINTEGRAR</td></tr>
-      <tr><td class="etapa">3.5(b) Restaurar acesso normal</td><td><label><input type="checkbox" id="chk-3-5b"> Liberar acesso normal à conta com credenciais novas</label></td></tr>
+      <tr><th>Sessão</th><td><label><input type="checkbox" id="c3-1"> Revogar todos os Refresh Tokens de OAuth (Logout forçado)</label></td></tr>
+      <tr><th>Acesso</th><td><label><input type="checkbox" id="c3-2"> Bloquear/Desabilitar conta no IDP (Entra ID, AD, Okta)</label></td></tr>
+      <tr><td colspan="2" class="condicional">Se houver movimentação lateral detectada:</td></tr>
+      <tr><th>Isolamento</th><td><label><input type="checkbox" id="c3-3"> Isolar máquinas afetadas via EDR/Firewall</label></td></tr>
     </table>
 
-    <h2>4. DIAGNÓSTICO</h2>
+    <h2 class="h-erradicacao">4. ERRADICAÇÃO</h2>
     <table>
-      <tr><th>Etapa</th><th>Descrição</th></tr>
-      <tr><td class="etapa">4.1 Validar reintegração segura</td><td><label><input type="checkbox" id="chk-4-1"> Confirmar que conta reintegrada não apresenta riscos</label></td></tr>
-      <tr><td class="etapa">4.2 Checar conformidade técnica e regulatória</td><td><label><input type="checkbox" id="chk-4-2"> Verificar atendimento a políticas internas e regulamentações</label></td></tr>
+      <tr><th>Revogação de Sessões</th><td><label><input type="checkbox" id="c4-3">  Utilize o recurso de Revogar Tokens de Atualização para desconectar o usuário de todos os dispositivos imediatamente.
+      </label></td></tr>
+      <tr><th>Contas de "Shadow Admin"</th><td><label><input type="checkbox" id="c4-1"> Procure por novas contas criadas com nomes que pareçam legítimos para servirem de backdoor.</label></td></tr>
+      <tr><th>Persistência</th><td><label><input type="checkbox" id="c4-1"> Auditar e remover Regras de Encaminhamento de E-mail</label></td></tr>
+      <tr><th>Apps</th><td><label><input type="checkbox" id="c4-2"> Remover permissões de Aplicativos de Terceiros (Enterprise Apps)</label></td></tr>
+      <tr><th>Varredura</th><td><label><input type="checkbox" id="c4-3"> Executar Full Scan antimalware em dispositivos vinculados à conta</label></td></tr>
     </table>
 
-    <h2>5. RESPOSTA PÓS-INCIDENTE</h2>
+    <h2 class="h-recuperacao">5. RECUPERAÇÃO</h2>
     <table>
-      <tr><th>Etapa</th><th>Descrição</th></tr>
-      <tr><td class="etapa">5.1 Documentar lições aprendidas</td><td><label><input type="checkbox" id="chk-5-1"> Registrar aprendizados do incidente</label></td></tr>
-      <tr><td class="etapa">5.2 Atualizar playbooks</td><td><label><input type="checkbox" id="chk-5-2"> Revisar e atualizar procedimentos baseados no caso</label></td></tr>
-      <tr><td class="etapa">5.3 Treinar equipe</td><td><label><input type="checkbox" id="chk-5-3"> Capacitar equipe com base nas lições aprendidas</label></td></tr>
-      <tr><td class="etapa">5.4 Reportar métricas e indicadores</td><td><label><input type="checkbox" id="chk-5-4"> Gerar relatório com métricas de tempo de resposta e eficácia</label></td></tr>
-      <tr><td class="etapa">FIM</td><td><label><input type="checkbox" id="chk-6"> Encerrar formalmente o tratamento do incidente</label></td></tr>
+      <tr><th>Restauração de Acessos</th><td><label><input type="checkbox" id="c5-1"> O acesso do usuário só deve ser devolvido após uma verificação forte.</label></td></tr>
+      <tr><th>Credenciais</th><td><label><input type="checkbox" id="c5-1"> Realizar Reset de Senha (complexidade conforme política)</label></td></tr>
+      <tr><th>MFA</th><td><label><input type="checkbox" id="c5-2"> Revalidar/Recadastrar fatores de autenticação (MFA)</label></td></tr>
+      <tr><th>Monitoramento</th><td><label><input type="checkbox" id="c5-3"> Colocar conta em "Watchlist" de alta prioridade no SIEM por 7 dias</label></td></tr>
+      <tr><th>Retorno ao Baseline</th><td><label><input type="checkbox" id="c5-3"> Se não houver anomalias, a conta volta ao monitoramento, e o incidente é formalmente fechado nas Atividades Pós-Incidente do NIST.</label></td></tr>
+    </table>
+
+    <h2 class="h-pos">6. ATIVIDADES PÓS-INCIDENTE</h2>
+    <table>
+      <tr><th>Documentação</th><td><label><input type="checkbox" id="c6-1"> Elaborar Relatório de Lições Aprendidas (Causa Raiz)</label></td></tr>
+      <tr><th>Métricas</th><td><label><input type="checkbox" id="c6-2"> Registrar MTTR (Tempo Médio de Resposta) e Impacto</label></td></tr>
+      <tr><th>Melhoria</th><td><label><input type="checkbox" id="c6-3"> Atualizar Playbook e base de conhecimento </label></td></tr>
+      <tr><th>Conclusão</th><td><label><input type="checkbox" id="c6-4"> Formalizar o encerramento do ticket/incidente</label></td></tr>
     </table>
 
     <div class="actions">
-      <button class="save-btn" id="save-btn">Salvar</button>
-      <button class="clear-btn" id="clear-btn">Limpar</button>
+      <button class="save-btn" id="save-btn">Salvar Progresso</button>
+      <button class="clear-btn" id="clear-btn">Limpar Checklist</button>
     </div>
-
-    <p class="note">Nota: Os itens com 🔴 são marcadores de fase crítica e representam pontos de decisão no fluxograma.</p>
   </div>
 
   <script>
-    // Salvar estado individual ao mudar
-    function saveState(id, checked) {
-      localStorage.setItem(id, checked ? "true" : "false");
-    }
-
-    // Restaurar estado ao carregar
-    function restoreState() {
-      document.querySelectorAll("input[type=checkbox]").forEach(cb => {
-        const saved = localStorage.getItem(cb.id);
-        cb.checked = (saved === "true");
+    const checkboxes = document.querySelectorAll("input[type=checkbox]");
+    
+    // Restaurar estado
+    window.onload = () => {
+      checkboxes.forEach(cb => {
+        cb.checked = localStorage.getItem(cb.id) === "true";
       });
-    }
+    };
 
-    // Salvar todos (força persistência explícita)
-    function saveAll() {
-      document.querySelectorAll("input[type=checkbox]").forEach(cb => {
-        saveState(cb.id, cb.checked);
-      });
-      alert("Checklist salvo no navegador.");
-    }
+    // Salvar ao clicar
+    document.getElementById("save-btn").onclick = () => {
+      checkboxes.forEach(cb => localStorage.setItem(cb.id, cb.checked));
+      alert("Checklist salvo com sucesso!");
+    };
 
-    // Limpar todos
-    function clearAll() {
-      document.querySelectorAll("input[type=checkbox]").forEach(cb => {
-        cb.checked = false;
-        localStorage.removeItem(cb.id);
-      });
-      alert("Checklist limpo.");
-    }
-
-    // Inicialização
-    document.addEventListener("DOMContentLoaded", () => {
-      restoreState();
-      document.querySelectorAll("input[type=checkbox]").forEach(cb => {
-        cb.addEventListener("change", () => saveState(cb.id, cb.checked));
-      });
-      document.getElementById("save-btn").addEventListener("click", saveAll);
-      document.getElementById("clear-btn").addEventListener("click", clearAll);
-    });
+    // Limpar
+    document.getElementById("clear-btn").onclick = () => {
+      if(confirm("Deseja limpar todo o progresso?")) {
+        checkboxes.forEach(cb => {
+          cb.checked = false;
+          localStorage.removeItem(cb.id);
+        });
+      }
+    };
   </script>
 </body>
 </html>
